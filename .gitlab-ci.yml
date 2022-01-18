@@ -1,0 +1,25 @@
+stages:
+  - check
+  - build
+  - test
+
+image: ajaust/automation-lecture
+
+check_code:
+  stage: check
+  script:
+    - echo "This job builds something quickly."
+    - black --check .
+
+build_code:
+  stage: build
+  variables:
+    PROJECT_NAME: "Automation Lecture"
+  script:
+    - echo "Building project $PROJECT_NAME"
+
+test_code:
+  stage: test
+  script:
+    - pip install --user  pytest
+    - python -m unittest
