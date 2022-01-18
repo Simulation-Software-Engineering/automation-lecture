@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: "Install style checker"
-        run: pip -U black
+        run: pip install --user black
       - name: "Run style check"
         run: black --check .
   build:
@@ -26,6 +26,6 @@ jobs:
     steps:
       #- uses: actions/checkout@v2
       - name: "Install pytest dependency"
-        run: pip -U pytest
+        run: pip install --user  pytest
       - name: "Run unittest"
         run: python -m unittest
