@@ -10,6 +10,7 @@ class TestOperations(TestCase):
     """
     Test suite for mathematical operations functions.
     """
+
     def setUp(self):
         # Fixture
         self.data1 = [43, 32, 167, 18, 1, 209]
@@ -18,7 +19,7 @@ class TestOperations(TestCase):
     # Unit test
     def test_find_max(self):
         """
-        Test operations.find_max 
+        Test operations.find_max
         """
         # Expected result
         expected_max = 209
@@ -56,7 +57,7 @@ class TestOperations(TestCase):
 
         # Actual result
         actual_mean = find_mean([maximum1, maximum2])
-        
+
         # Test
         self.assertEqual(actual_mean, expected_mean)
 
@@ -69,7 +70,7 @@ class TestOperations(TestCase):
             rows = csv.reader(f, quoting=csv.QUOTE_NONNUMERIC)
             # Fixture
             data = next(rows)
-            
+
             # Expected result
             reference_mean = next(rows)
 
