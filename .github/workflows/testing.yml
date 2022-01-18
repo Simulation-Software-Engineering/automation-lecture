@@ -19,7 +19,7 @@ jobs:
     steps:
       #- uses: actions/checkout@v2
       - name: "Run build phase"
-        run: echo "Building project ${PROJECT_NAME}"
+        run: echo "Building project $PROJECT_NAME"
   test:
     needs: build
     runs-on: ubuntu-latest
