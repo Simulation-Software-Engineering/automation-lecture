@@ -1,0 +1,31 @@
+name: Testing workflow
+
+on: [push, pull_request]
+
+jobs:
+  style:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: "Install style checker"
+        run: pip -U black
+      - name: "Run style check"
+        run: black --check .
+  build:
+    needs: style
+    runs-on: ubuntu-latest
+    env:
+      PROJECT_NAME: "Automation Lecture"
+    steps:
+      #- uses: actions/checkout@v2
+      - name: "Run build phase"
+        run: echo "Building project ${PROJECT_NAME}"
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      #- uses: actions/checkout@v2
+      - name: "Install pytest dependency"
+        run: pip -U pytest
+      - name: "Run unittest"
+        run: python -m unittest
