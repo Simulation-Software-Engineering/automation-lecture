@@ -6,10 +6,10 @@ jobs:
   style:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
-          python-version: '3.8'
+          python-version: '3.10'
       - name: "Install style checker"
         run: pip install black
       - name: "Run style check"
@@ -23,12 +23,13 @@ jobs:
       - name: "Run build phase"
         run: echo "Building project $PROJECT_NAME"
   test:
-    needs: build
+    # needs: build # We would normally not run the tests if the build fails,
+                   # but letting them go through, for demonstration purposes.
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
-          python-version: '3.8'
+          python-version: '3.10'
       - name: "Run unittest"
         run: python -m unittest
